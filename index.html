@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocky Mountain Journal | Regional Severe Weather Preparedness & Emergency Infrastructure</title>
+    <meta name="description" content="An authoritative digital publication focusing on Palmer Divide weather patterns, severe storm risk mitigation, basement flood prevention, and emergency home infrastructure in Douglas County.">
+    
+    <!-- SVG Favicon - Unique Mountain Crest & Storm Shield -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23121E2B'/><path d='M22 72 L50 22 L78 72 Z' fill='none' stroke='%2300E5FF' stroke-width='6' stroke-linejoin='round'/><path d='M36 72 L50 46 L64 72 Z' fill='%23FF7B00'/><polygon points='50,15 54,26 65,26 56,32 59,43 50,36 41,43 44,32 35,26 46,26' fill='%23FFD700'/></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           UNIQUE VISUAL SYSTEM: Alpine Cyber-Slate & Solar Amber
+           Concept: High-Contrast Meteorological Science Portal / Cyber-Journal
+           ========================================================================== */
+        :root {
+            --bg-void: #090F17;
+            --bg-surface: #101926;
+            --bg-surface-elevated: #182538;
+            
+            --glass-bg: rgba(16, 25, 38, 0.75);
+            --glass-border: rgba(0, 229, 255, 0.18);
+            --glass-border-strong: rgba(255, 123, 0, 0.4);
+            
+            --text-bright: #FFFFFF;
+            --text-main: #D5E1ED;
+            --text-muted: #8397AB;
+            
+            --accent-cyan: #00E5FF;
+            --accent-amber: #FF7B00;
+            --accent-yellow: #FFD700;
+            --accent-blue: #0077FF;
+            
+            --font-head: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --radius-xl: 28px;
+            --radius-md: 14px;
+            --radius-pill: 999px;
+            
+            --glow-cyan: 0 0 30px rgba(0, 229, 255, 0.22);
+            --glow-amber: 0 0 30px rgba(255, 123, 0, 0.25);
+            --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-smooth: all 0.35s ease;
+        }
+
+        /* ==========================================================================
+           RESET & GLOBAL STYLES
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.75;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 80% 10%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 10% 50%, rgba(255, 123, 0, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 60% 90%, rgba(0, 119, 255, 0.07) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, .font-head {
+            font-family: var(--font-head);
+            color: var(--text-bright);
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        a:hover {
+            color: var(--accent-amber);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Cyber Visual Section Divider */
+        .cyber-divider {
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-amber), transparent);
+            margin: 5rem 0;
+            position: relative;
+        }
+
+        .cyber-divider::before {
+            content: 'STORM DATA';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-void);
+            padding: 0 18px;
+            font-family: var(--font-head);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.25em;
+            color: var(--accent-cyan);
+        }
+
+        /* Interactive Buttons */
+        .btn-rmj {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.05rem 2.4rem;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .btn-rmj-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-void);
+            border: none;
+            box-shadow: var(--glow-cyan);
+            font-weight: 800;
+        }
+
+        .btn-rmj-primary:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 35px rgba(0, 229, 255, 0.45);
+            color: #000;
+        }
+
+        .btn-rmj-amber {
+            background: linear-gradient(135deg, var(--accent-amber), #D05000);
+            color: var(--text-bright);
+            border: none;
+            box-shadow: var(--glow-amber);
+            font-weight: 800;
+        }
+
+        .btn-rmj-amber:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 35px rgba(255, 123, 0, 0.5);
+        }
+
+        .btn-rmj-outline {
+            background: rgba(16, 25, 38, 0.6);
+            color: var(--accent-cyan);
+            backdrop-filter: blur(12px);
+        }
+
+        .btn-rmj-outline:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-void);
+            transform: translateY(-3px);
+        }
+
+        /* Glassmorphism Asymmetric Card */
+        .asym-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 2.6rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .asym-card:hover {
+            border-color: var(--glass-border-strong);
+            background: var(--bg-surface-elevated);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Section Title Block */
+        .section-tag {
+            font-family: var(--font-head);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-amber);
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            background: rgba(255, 123, 0, 0.1);
+            padding: 0.35rem 1rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 123, 0, 0.25);
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            line-height: 1.15;
+            margin-top: 0.5rem;
+        }
+
+        /* ==========================================================================
+           SECTION 1: STICKY NAVIGATION BAR
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: var(--transition-smooth);
+            background: rgba(9, 15, 23, 0.88);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        .navbar.scrolled {
+            padding: 0.85rem 0;
+            background: rgba(9, 15, 23, 0.96);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-weight: 900;
+            color: var(--bg-void);
+            font-size: 1.3rem;
+            box-shadow: var(--glow-cyan);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-sub {
+            font-size: 0.72rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* ==========================================================================
+           SECTION 2: DYNAMIC HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding-top: 11rem;
+            padding-bottom: 6rem;
+            position: relative;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.9rem;
+            line-height: 1.08;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #B8E8FF 50%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 620px;
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .hero-media {
+            position: relative;
+        }
+
+        .hero-img {
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--glass-border-strong);
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .hero-floating-badge {
+            position: absolute;
+            bottom: -25px;
+            right: -25px;
+            background: rgba(9, 15, 23, 0.95);
+            border: 1px solid var(--accent-amber);
+            padding: 1.25rem 1.75rem;
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--glow-amber);
+        }
+
+        .hero-floating-badge .badge-num {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            color: var(--accent-amber);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .hero-floating-badge .badge-lbl {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        /* ==========================================================================
+           SECTION 3: QUICK STATS & ACHIEVEMENTS GRID
+           ========================================================================== */
+        .stats-section {
+            padding: 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            padding: 2.2rem 1.5rem;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+        }
+
+        .stat-val {
+            font-family: var(--font-head);
+            font-size: 2.9rem;
+            font-weight: 900;
+            color: var(--accent-cyan);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-lbl {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ==========================================================================
+           SECTION 4: PLATFORM OVERVIEW / EDITORIAL MISSION
+           ========================================================================== */
+        .mission-section {
+            padding: 6rem 0;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .mission-text p {
+            color: var(--text-muted);
+            font-size: 1.08rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-quote {
+            border-left: 4px solid var(--accent-amber);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-bright);
+            font-size: 1.15rem;
+        }
+
+        .mission-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .mission-photos img {
+            border-radius: var(--radius-xl);
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            border: 1px solid var(--glass-border);
+        }
+
+        /* ==========================================================================
+           SECTION 5: MAIN FEATURED ARTICLE (SEO Embedded)
+           ========================================================================== */
+        .article-section {
+            padding: 6rem 0;
+        }
+
+        .article-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border-strong);
+            border-radius: var(--radius-xl);
+            padding: 4.5rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .article-meta .pill {
+            background: var(--accent-amber);
+            color: var(--text-bright);
+            padding: 0.28rem 0.9rem;
+            border-radius: var(--radius-pill);
+            font-weight: 800;
+        }
+
+        .article-title {
+            font-size: 3.3rem;
+            line-height: 1.12;
+            margin-bottom: 2rem;
+            color: var(--text-bright);
+        }
+
+        .article-banner {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+            margin-bottom: 3rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .article-body {
+            font-size: 1.12rem;
+            line-height: 1.9;
+            color: #C2D3E3;
+        }
+
+        .article-body h3 {
+            font-size: 1.85rem;
+            color: var(--accent-cyan);
+            margin: 2.8rem 0 1.2rem 0;
+        }
+
+        .article-body p {
+            margin-bottom: 1.8rem;
+        }
+
+        /* Exact Keyword Backlink Style */
+        .article-body a.keyword-backlink {
+            color: var(--accent-amber);
+            font-weight: 800;
+            text-decoration: underline;
+            text-decoration-color: var(--accent-cyan);
+            text-underline-offset: 5px;
+            padding: 3px 8px;
+            background: rgba(255, 123, 0, 0.12);
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .article-body a.keyword-backlink:hover {
+            background: var(--accent-amber);
+            color: var(--bg-void);
+            text-decoration: none;
+        }
+
+        /* Authority Outbound Link Style */
+        .article-body a.authority-link {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .article-body a.authority-link:hover {
+            color: var(--accent-amber);
+        }
+
+        /* ==========================================================================
+           SECTION 6: CORE FEATURES & KEY VALUE GRID
+           ========================================================================== */
+        .features-section {
+            padding: 6rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-box .icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 229, 255, 0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-weight: 800;
+            color: var(--accent-cyan);
+            font-size: 1.35rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .feature-box h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            font-size: 0.96rem;
+        }
+
+        /* ==========================================================================
+           SECTION 7: STEP-BY-STEP ARCHITECTURE GUIDE
+           ========================================================================== */
+        .guide-section {
+            padding: 6rem 0;
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 2.2rem 1.6rem;
+            position: relative;
+        }
+
+        .step-card .num {
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(0, 229, 255, 0.2);
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.85rem;
+            color: var(--accent-cyan);
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           SECTION 8: VALUE MATRIX / COMPARISON TABLE
+           ========================================================================== */
+        .matrix-section {
+            padding: 6rem 0;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--glass-border);
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-surface);
+            text-align: left;
+        }
+
+        .matrix-table th, .matrix-table td {
+            padding: 1.3rem 1.7rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .matrix-table th {
+            background: var(--bg-surface-elevated);
+            font-family: var(--font-head);
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .matrix-table tr:hover {
+            background: rgba(0, 229, 255, 0.04);
+        }
+
+        .matrix-table td.highlight {
+            color: var(--accent-amber);
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           SECTION 9: INTERACTIVE FAQ ACCORDION
+           ========================================================================== */
+        .faq-section {
+            padding: 6rem 0;
+        }
+
+        .faq-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .faq-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-header {
+            padding: 1.6rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            color: var(--text-bright);
+        }
+
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active {
+            border-color: var(--accent-amber);
+            background: var(--bg-surface-elevated);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: var(--accent-amber);
+            color: var(--text-bright);
+        }
+
+        .faq-item.active .faq-body {
+            padding: 0 2rem 1.8rem 2rem;
+            max-height: 250px;
+        }
+
+        /* ==========================================================================
+           SECTION 10: EXPERT TIPS & BEST PRACTICES CARDS
+           ========================================================================== */
+        .tips-section {
+            padding: 6rem 0;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .tip-card {
+            border-top: 3px solid var(--accent-cyan);
+        }
+
+        .tip-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            letter-spacing: 0.15em;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ==========================================================================
+           SECTION 11: USER FEEDBACK & TESTIMONIALS
+           ========================================================================== */
+        .testimonials-section {
+            padding: 6rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .testimonial-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+
+        .profile-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .profile-info h4 {
+            font-size: 1.05rem;
+        }
+
+        .profile-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           SECTION 12: HIGHLIGHTED RESOURCE BANNER
+           ========================================================================== */
+        .banner-section {
+            padding: 4rem 0;
+        }
+
+        .banner-box {
+            background: linear-gradient(135deg, rgba(16, 25, 38, 0.95), rgba(24, 37, 56, 0.95)),
+                        url('https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=1200&q=80') center/cover;
+            border: 1px solid var(--accent-amber);
+            border-radius: var(--radius-xl);
+            padding: 4.5rem 3rem;
+            text-align: center;
+            box-shadow: var(--glow-amber);
+        }
+
+        .banner-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .banner-box p {
+            max-width: 680px;
+            margin: 0 auto 2.5rem auto;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================================================
+           SECTION 13: FUNCTIONAL CONTACT FORM
+           ========================================================================== */
+        .contact-section {
+            padding: 6rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4.5rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            background: var(--bg-void);
+            border: 1px solid var(--glass-border);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            color: var(--text-bright);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+        }
+
+        textarea.form-control {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        /* ==========================================================================
+           SECTION 14: COMPREHENSIVE FOOTER
+           ========================================================================== */
+        .footer {
+            background: #060A10;
+            border-top: 1px solid var(--glass-border);
+            padding: 5rem 0 2.5rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 3.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-amber);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 2.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-layout, .mission-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .features-grid, .step-grid, .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2.7rem;
+            }
+            .article-title {
+                font-size: 2.2rem;
+            }
+            .article-card {
+                padding: 2rem 1.5rem;
+            }
+            .features-grid, .step-grid, .tips-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.2rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: MODERN STICKY NAVIGATION BAR -->
+    <header class="navbar" id="main-header">
+        <div class="container nav-content">
+            <a href="#" class="brand">
+                <div class="brand-icon">RM</div>
+                <div class="brand-text">
+                    <span class="brand-name">ROCKY MOUNTAIN</span>
+                    <span class="brand-sub">JOURNAL</span>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#featured">Storm Report</a></li>
+                    <li><a href="#matrix">Comparison Matrix</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn-rmj btn-rmj-outline">Inquire Advisory</a>
+        </div>
+    </header>
+
+    <!-- SECTION 2: DYNAMIC HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <div>
+                    <h1 class="hero-title">Palmer Divide Storm Science & Property Defense</h1>
+                    <p class="hero-desc">An independent Web 2.0 research journal analyzing meteorological flash floods, Palmer Divide hail corridors, and emergency drainage infrastructure for Douglas County homes.</p>
+                    <div class="hero-btns">
+                        <a href="#featured" class="btn-rmj btn-rmj-primary">Read Main Feature</a>
+                        <a href="#overview" class="btn-rmj btn-rmj-outline">Explore Data</a>
+                    </div>
+                </div>
+                <div class="hero-media">
+                    <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=1000&q=80" alt="Palmer Divide Severe Weather Storm" class="hero-img">
+                    <div class="hero-floating-badge">
+                        <div class="badge-num">100%</div>
+                        <div class="badge-lbl">Palmer Divide Storm Coverage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: QUICK STATS & ACHIEVEMENTS GRID -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-val">3.5"</div>
+                    <div class="stat-lbl">Peak Rainfall Per Hour</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">85%</div>
+                    <div class="stat-lbl">Basement Flood Risk</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">100%</div>
+                    <div class="stat-lbl">Verified Local Research</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">24/7</div>
+                    <div class="stat-lbl">Emergency Response Need</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cyber-divider"></div>
+
+    <!-- SECTION 4: PLATFORM OVERVIEW / EDITORIAL MISSION -->
+    <section class="mission-section" id="overview">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-text">
+                    <div class="section-header">
+                        <span class="section-tag">Editorial Charter</span>
+                        <h2>Analyzing Alpine Storm Physics & Infrastructure</h2>
+                    </div>
+                    <p>The Rocky Mountain Journal brings together severe weather analysts, hydrologists, and structural engineers to publish actionable guidance on protecting residential properties along the Palmer Divide.</p>
+                    <p>Our research focuses on rapid atmospheric pressure drops, microburst rainfall accumulation, and the mechanical infrastructure required to prevent sudden basement sub-slab flooding.</p>
+                    <div class="mission-quote">
+                        "Palmer Divide weather systems develop rapidly. Mechanical drainage failure during a 30-minute storm can cause tens of thousands in structural property damage."
+                    </div>
+                </div>
+                <div class="mission-photos">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Residential Drainage System">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Storm Cloud Formation">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" alt="Suburban Home Defense">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Sump Pump Mechanical Testing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: MAIN FEATURED ARTICLE (SEO Link Integrated inside) -->
+    <section class="article-section" id="featured">
+        <div class="container">
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="pill">Special Meteorological Feature</span>
+                    <span>•</span>
+                    <span>Douglas County Report</span>
+                    <span>•</span>
+                    <span>9 Min Read</span>
+                </div>
+
+                <h1 class="article-title">Safeguarding Your Household Against Severe Weather Damage</h1>
+
+                <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe Weather and Flood Infrastructure" class="article-banner">
+
+                <div class="article-body">
+                    <p>Severe storm seasons across Douglas County frequently cause rapid water intrusion and flash flooding risks. Inadequate drainage systems and failing sump pumps can quickly turn minor rainfall into catastrophic basement damage. Installing backup pump units and maintaining clear drainage pathways protects properties, and calling an <a href="https://expressplumberparker.com/" class="keyword-backlink">Emergency Plumber in Parker</a> ensures immediate intervention when catastrophic flooding occurs. Early preparation drastically reduces the overall risk of seasonal water destruction.</p>
+
+                    <h3>The Palmer Divide Weather Anomaly</h3>
+                    <p>Residential areas situated along the Palmer Divide experience unique meteorological patterns compared to surrounding lowlands. Cold mountain air colliding with warm plains moisture creates sudden, intense convective thunderstorms between May and September. According to atmospheric research published on <a href="https://en.wikipedia.org/wiki/Pikes_Peak_Granite" class="authority-link" target="_blank" rel="noopener">Wikipedia</a>, these high-altitude weather dynamics produce rapid precipitation spikes that quickly overwhelm surface grading and municipal storm gutters.</p>
+
+                    <p>When heavy downpours saturate the topsoil, hydrostatic pressure builds against sub-ground basement walls. Without functional perimeter weeping tiles and primary sump discharge systems, pressurized groundwater forces its way through slab cracks and cold joints, resulting in rapid indoor water intrusion.</p>
+
+                    <h3>Critical Sump Pump Readiness & Battery Backups</h3>
+                    <p>Because severe thunderstorms in eastern Colorado are frequently accompanied by localized utility grid failures, relying solely on an AC-powered sump pump leaves a property highly vulnerable. Equipping your basement with a secondary, battery-operated auxiliary pump ensures continuous operation during grid blackouts.</p>
+
+                    <p>Homeowners should review public safety and flood plain guidelines provided by the <a href="https://www.colorado.gov/" class="authority-link" target="_blank" rel="noopener">Official Colorado State Web Portal</a> to better understand emergency response steps, municipal drainage easements, and seasonal flood insurance standards designed for high-altitude suburban developments.</p>
+
+                    <h3>Long-Term Structural Risk Reduction</h3>
+                    <p>Preventing storm damage requires routine inspections of exterior window wells, check valve assemblies, and main supply shut-off mechanisms. By establishing a comprehensive drainage strategy ahead of storm season, Douglas County residents preserve their foundation stability and shield their homes from devastating environmental water loss.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CORE FEATURES & KEY VALUE GRID -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Key Vulnerabilities</span>
+                <h2>Storm Defense Parameters</h2>
+            </div>
+            <div class="features-grid">
+                <div class="asym-card feature-box">
+                    <div class="icon">01</div>
+                    <h3>Flash Hydrostatic Pressure</h3>
+                    <p>How rapid precipitation surges create immense subterranean water pressure against concrete basement slabs.</p>
+                </div>
+                <div class="asym-card feature-box">
+                    <div class="icon">02</div>
+                    <h3>Battery Backup Redundancy</h3>
+                    <p>Deploying secondary DC-powered pumps to maintain continuous discharge when storm power outages strike.</p>
+                </div>
+                <div class="asym-card feature-box">
+                    <div class="icon">03</div>
+                    <h3>Check Valve Diagnostics</h3>
+                    <p>Preventing discharged groundwater from flowing backward into the sump basin during heavy continuous pumping.</p>
+                </div>
+                <div class="asym-card feature-box">
+                    <div class="icon">04</div>
+                    <h3>Window Well Covers</h3>
+                    <p>Installing high-impact polycarbonate covers to shield basement window wells from microburst rain build-up.</p>
+                </div>
+                <div class="asym-card feature-box">
+                    <div class="icon">05</div>
+                    <h3>Perimeter Grading</h3>
+                    <p>Slope optimization techniques designed to direct surface storm runoff away from exterior foundation walls.</p>
+                </div>
+                <div class="asym-card feature-box">
+                    <div class="icon">06</div>
+                    <h3>Emergency Extraction</h3>
+                    <p>Rapid response containment steps to extract indoor water and mitigate structural mold risk after severe storms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: STEP-BY-STEP ARCHITECTURE GUIDE -->
+    <section class="guide-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Execution Strategy</span>
+                <h2>4-Phase Storm Readiness Framework</h2>
+            </div>
+            <div class="step-grid">
+                <div class="step-card">
+                    <span class="num">01</span>
+                    <h3>Sump Pump Test</h3>
+                    <p>Pour water into the pit to verify float trigger activation and test check valve seating before storm season starts.</p>
+                </div>
+                <div class="step-card">
+                    <span class="num">02</span>
+                    <h3>Battery Audit</h3>
+                    <p>Inspect deep-cycle marine batteries connected to backup units to ensure full charge capacity during power cuts.</p>
+                </div>
+                <div class="step-card">
+                    <span class="num">03</span>
+                    <h3>Clear Discharge Lines</h3>
+                    <p>Inspect exterior discharge outlets to clear debris, ice, or soil blockages that impede water flow away from the home.</p>
+                </div>
+                <div class="step-card">
+                    <span class="num">04</span>
+                    <h3>Emergency Valve Tagging</h3>
+                    <p>Label primary supply shut-offs and keep emergency contact details accessible for rapid off-hours dispatch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: VALUE MATRIX / COMPARISON TABLE -->
+    <section class="matrix-section" id="matrix">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Comparison Matrix</span>
+                <h2>Drainage Infrastructure Standards</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>Performance Parameter</th>
+                            <th>Unmonitored System</th>
+                            <th>Standard AC Pump</th>
+                            <th>Dual Backup System</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Power Outage Protection</td>
+                            <td>Zero Protection</td>
+                            <td>Fails Without Power</td>
+                            <td class="highlight">100% Operational (DC Battery)</td>
+                        </tr>
+                        <tr>
+                            <td>Peak Surge Handling</td>
+                            <td>Basement Flooding Risk</td>
+                            <td>Single Pump Capacity</td>
+                            <td class="highlight">Dual Pump Simultaneous Discharge</td>
+                        </tr>
+                        <tr>
+                            <td>Backflow Prevention</td>
+                            <td>High Reverse Risk</td>
+                            <td>Standard Valve</td>
+                            <td class="highlight">Dual Heavy-Duty Check Valve</td>
+                        </tr>
+                        <tr>
+                            <td>Estimated Structural Loss</td>
+                            <td>$30,000+ Average Damage</td>
+                            <td>Moderate Outage Loss</td>
+                            <td class="highlight">$0 (Complete Protection)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: INTERACTIVE FAQ ACCORDION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Clarifications</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Why are storm threats along the Palmer Divide so severe?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-body">
+                        The Palmer Divide forms an elevated ridge that forces warm air masses to rise rapidly. This convective uplifting generates localized microburst thunderstorms that dump extreme rainfall within short periods, overwhelming standard residential gutters and perimeter drainage.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>How does a battery backup sump pump work during power outages?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-body">
+                        A battery backup system utilizes a dedicated 12V deep-cycle battery connected to a secondary auxiliary pump. When power fails and water rises above normal levels in the sump pit, a secondary float switch activates the battery pump automatically.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>What is a check valve and why is it essential for sump pumps?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-body">
+                        A check valve is a one-way mechanical valve installed on the sump pump discharge pipe. It prevents discharged water inside the vertical pipe from flowing back down into the sump pit when the motor shuts off, extending pump life and reducing cycling.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>What immediate steps should be taken if a basement begins flooding?</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-body">
+                        First, turn off power to the basement at the main breaker panel to prevent electrical hazards. Shut off the main water valve if supply lines are compromised, and contact a 24/7 licensed emergency extraction team immediately.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: EXPERT TIPS & BEST PRACTICES CARDS -->
+    <section class="tips-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Best Practices</span>
+                <h2>Seasonal Homeowner Guidelines</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="asym-card tip-card">
+                    <div class="tip-tag">Guideline 01</div>
+                    <h3>Replace Batteries Every 3 Years</h3>
+                    <p>Deep-cycle marine batteries powering auxiliary sump pumps lose charge capacity over time. Replace them proactively before failure.</p>
+                </div>
+                <div class="asym-card tip-card">
+                    <div class="tip-tag">Guideline 02</div>
+                    <h3>Clean Sump Pit Debris</h3>
+                    <p>Remove silt, gravel, and mechanical debris from the bottom of your sump basin annually to prevent float switch jamming.</p>
+                </div>
+                <div class="asym-card tip-card">
+                    <div class="tip-tag">Guideline 03</div>
+                    <h3>Verify Freeze-Free Discharges</h3>
+                    <p>Ensure exterior sump discharge lines extend past foundation walls and feature freeze-proof air gap couplings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: USER FEEDBACK & TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Community Feedback</span>
+                <h2>What Local Homeowners Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="asym-card">
+                    <p>"The severe weather articles on Rocky Mountain Journal prompted us to install a battery backup pump just three weeks before a major severe hail storm struck. It saved our finished basement from complete destruction."</p>
+                    <div class="testimonial-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Jason Miller" class="profile-img">
+                        <div class="profile-info">
+                            <h4>Jason Miller</h4>
+                            <span>Douglas County Homeowner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="asym-card">
+                    <p>"Understanding the mechanics of hydrostatic pressure during Palmer Divide storms changed our entire home maintenance approach. An indispensable resource for local property protection."</p>
+                    <div class="testimonial-profile">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Samantha Wright" class="profile-img">
+                        <div class="profile-info">
+                            <h4>Samantha Wright</h4>
+                            <span>Parker Resident</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 12: HIGHLIGHTED RESOURCE BANNER -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-box">
+                <h2>Protect Your Home Before the Next Major Storm</h2>
+                <p>Download our complete Palmer Divide Flash Flood & Drainage Protection Manual to audit your home's emergency infrastructure.</p>
+                <a href="#contact" class="btn-rmj btn-rmj-amber">Download Manual</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 13: FUNCTIONAL CONTACT / CONSULTATION FORM -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <div class="section-header" style="margin-bottom: 2rem;">
+                        <span class="section-tag">Connect</span>
+                        <h2>Consult Our Advisory Desk</h2>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Have questions regarding storm risk analyses, severe weather research submissions, or emergency property defense guides? Send a direct message to our editorial board.</p>
+                    <div style="font-family: var(--font-head); color: var(--accent-cyan); font-size: 1.1rem;">
+                        Rocky Mountain Journal Media Desk<br>
+                        <span style="font-size: 0.88rem; color: var(--text-muted); font-family: var(--font-body);">Subdomain: rockymountainjournal</span>
+                    </div>
+                </div>
+                <form class="asym-card contact-form" onsubmit="event.preventDefault(); alert('Your communication has been received by Rocky Mountain Journal.');">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" class="form-control" placeholder="Robert Sterling" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="robert@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Inquiry Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Palmer Divide Drainage Inquiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Detail your research question or home defense inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-rmj btn-rmj-primary" style="width: 100%; border: none;">Transmit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 14: COMPREHENSIVE FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="brand">
+                        <div class="brand-icon">RM</div>
+                        <div class="brand-text">
+                            <span class="brand-name">ROCKY MOUNTAIN</span>
+                            <span class="brand-sub">JOURNAL</span>
+                        </div>
+                    </a>
+                    <p>An authoritative Web 2.0 digital journal evaluating severe atmospheric weather risks, emergency drainage infrastructure, and property protection across Colorado.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#featured">Storm Report</a></li>
+                        <li><a href="#matrix">Comparison Matrix</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Research Modules</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Palmer Divide Physics</a></li>
+                        <li><a href="#">Hydrostatic Pressure</a></li>
+                        <li><a href="#">Sump Pump Redundancy</a></li>
+                        <li><a href="#">Flash Flood Mitigation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Journal Metadata</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+                        Publisher: Rocky Mountain Journal<br>
+                        Edition: 2026 Severe Weather Series<br>
+                        Subdomain: rockymountainjournal
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Rocky Mountain Journal. All rights reserved.</div>
+                <div>Designed as an independent Web 2.0 digital publication.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MINIMAL VANILLA JAVASCRIPT FOR INTERACTION -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Interactive FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const header = item.querySelector('.faq-header');
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all open FAQs
+                    faqItems.forEach(i => i.classList.remove('active'));
+
+                    // Toggle clicked FAQ
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Sticky Header Visual Shift
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 60) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
